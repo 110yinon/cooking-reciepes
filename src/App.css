@@ -13,3 +13,9 @@
   margin: 10px 10px;
   box-sizing: border-box;
 }
+.recipes-list{
+  background-color: rgb(222, 222, 222);
+  height: 100vh;
+  align-items: flex-start;
+  padding-top: 30px;
+}
