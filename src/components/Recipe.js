@@ -1,6 +1,6 @@
 import './recipe.css'
 export default function Recipe({ recipe }) {
-    console.log('recipe:', recipe);
+    // console.log('recipe:', recipe);
     return (
         <div className='recipe'>
             <h2 className='title'>{recipe.title}</h2>

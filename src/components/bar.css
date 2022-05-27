@@ -29,7 +29,7 @@
 }
 .bar button:hover{
     color: black;
-    background-color: grey;
+    background-color: whitesmoke;
 }
 .bar label,button,input{
     height: 35px;
