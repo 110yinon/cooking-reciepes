@@ -1,16 +1,17 @@
+import { Link } from 'react-router-dom';
 import './bar.css';
 
-function Bar({changeHandler}) {
+function Bar({ changeHandler }) {
 
     return (
         <div className="bar container">
-            <h1>Cooking Ninja</h1>
+            <h1><Link to="/">Cooking Ninja</Link></h1>
             <div className='ctrl-bar'>
                 <label>
                     <span>Search: </span>
-                    <input type="text" onChange={changeHandler}/>
+                    <input type="text" onChange={changeHandler} />
                 </label>
-                <button>Create Recipe</button>
+                <button><Link to="/recipe">Create Recipe</Link></button>
             </div>
         </div>
     );

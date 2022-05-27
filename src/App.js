@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import Bar from './components/Bar';
 import Recipe from './components/Recipe';
+import Create from './components/Create';
 import { useFetch } from './hooks/useFetch';
 
 function App() {
@@ -11,14 +13,14 @@ function App() {
   const [recipeString, setRecipeString] = useState(null);
 
   console.log('--------------------------');
-  console.log('recipes:',recipes);
+  console.log('recipes:', recipes);
   // console.log(data, isPending, error);
   console.log('**************************');
 
 
   const changeHandler = (e) => {
     const str = e.target.value.trim();
-    if(str === '' || str === ' ' || str === null){
+    if (str === '' || str === ' ' || str === null) {
       setRecipeString(null)
       setRecipes(data);
     }
@@ -30,7 +32,7 @@ function App() {
       prevState = data.filter(
         recipe => recipe.title.toLowerCase().includes(str)
       );
-      
+
       // console.log(prevState,prevState.length);
       // return [...prevState];
       if (prevState.length === 0) {
@@ -49,13 +51,28 @@ function App() {
 
   return (
     <div className="App">
-      <Bar changeHandler={changeHandler} />
-      {error && <div>{error}</div>}
-      {isPending && <div>Loading recipes...</div>}
-      <div className='recipes-list '>
-        {recipeString && <h1 className='recipe-string'>Recipes including "{recipeString}"</h1>}
-        {recipes && recipes.map(recipe => <Recipe recipe={recipe} key={recipe.id} />)}
-      </div>
+      <BrowserRouter>
+        <Bar changeHandler={changeHandler} />
+        <Switch>
+          <Route exact path="/">
+            {error && <div>{error}</div>}
+            {isPending && <div>Loading recipes...</div>}
+            <div className='recipes-list '>
+              {recipeString && <h1 className='recipe-string'>Recipes including "{recipeString}"</h1>}
+              {recipes && recipes.map(recipe => <Recipe recipe={recipe} key={recipe.id} />)}
+            </div>
+          </Route>
+          <Route path="/recipes/:id">
+            <div>im recipe</div>
+          </Route>
+          <Route path="/recipe">
+            <Create />
+          </Route>
+          <Route path="/*">
+            <Redirect to="/" />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

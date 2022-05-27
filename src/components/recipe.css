@@ -43,3 +43,7 @@
 .recipe-string{
     text-align: center;
 }
+.recipe button a{
+    color: inherit;
+    text-decoration-line: none;
+}

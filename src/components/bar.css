@@ -35,3 +35,11 @@
     height: 35px;
     box-sizing: border-box;    
 }
+.bar h1 a{
+    color:inherit;
+    text-decoration: none;
+}
+.bar button a{
+    color:inherit;
+    text-decoration: none;
+}
