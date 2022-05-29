@@ -5,19 +5,21 @@ import Bar from './components/Bar';
 import Recipe from './components/Recipe';
 import Create from './components/Create';
 import { useFetch } from './hooks/useFetch';
+import RecipeExpnd from './components/RecipeExpnd';
 
 function App() {
-  const [url, setUrl] = useState('http://localhost:3000/recipes');
+  const [url] = useState('http://localhost:3000/recipes');
   const { data, isPending, error } = useFetch(url);
-  const [recipes, setRecipes] = useState(null);
+  const [recipes, setRecipes] = useState([]);
   const [recipeString, setRecipeString] = useState(null);
 
   console.log('--------------------------');
+  console.log(data, isPending, error);
   console.log('recipes:', recipes);
-  // console.log(data, isPending, error);
   console.log('**************************');
 
-
+  
+  
   const changeHandler = (e) => {
     const str = e.target.value.trim();
     if (str === '' || str === ' ' || str === null) {
@@ -31,24 +33,35 @@ function App() {
       console.log(data.filter(recipe => recipe.title.toLowerCase().includes(str)));
       prevState = data.filter(
         recipe => recipe.title.toLowerCase().includes(str)
-      );
-
-      // console.log(prevState,prevState.length);
-      // return [...prevState];
-      if (prevState.length === 0) {
-        console.log(data);
-        return [];
-      }
-      else {
-        return [...prevState];
-      }
-    });
+        );
+        
+        // console.log(prevState,prevState.length);
+        // return [...prevState];
+        if (prevState.length === 0) {
+          console.log(data);
+          return [];
+        }
+        else {
+          return [...prevState];
+        }
+      });
+    }
+    
+    useEffect(() => {
+      console.log('setRecipes fire');
+      setRecipes(data)
+    }, [data]);
+    
+    const getRecipe = (id) => {
+      // console.log(id);
+      if (recipes) {
+        const [recipe] = recipes.filter(recipe => recipe.id === id);
+        // console.log(sara);
+      return recipe;
+    }
   }
 
-  useEffect(() => {
-    setRecipes(data)
-  }, [data]);
-
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -63,7 +76,7 @@ function App() {
             </div>
           </Route>
           <Route path="/recipes/:id">
-            <div>im recipe</div>
+            <RecipeExpnd getRecipe={getRecipe} />
           </Route>
           <Route path="/recipe">
             <Create />

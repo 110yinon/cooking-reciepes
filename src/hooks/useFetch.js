@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 
 export const useFetch = (url, _options) => {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState([])
   const [isPending, setIsPending] = useState(false)
   const [error, setError] = useState(null)
   
@@ -10,10 +10,11 @@ export const useFetch = (url, _options) => {
   const options = useRef(_options).current
 
   useEffect(() => {
-    // console.log(options)
+    console.log('useFetch fire')
     const controller = new AbortController()
 
     const fetchData = async () => {
+    console.log('fetchData fire')
       setIsPending(true)
       
       try {
@@ -22,7 +23,7 @@ export const useFetch = (url, _options) => {
           throw new Error(res.statusText)
         }
         const data = await res.json()
-
+        console.log('kuni')
         setIsPending(false)
         setData(data)
         setError(null)
