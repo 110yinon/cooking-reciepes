@@ -10,11 +10,11 @@ export default function RecipeExpnd({ getRecipe }) {
     console.log('*** RecipeExpnd component ***');
 
     useEffect(() => {
-        console.log('handler ');
+        console.log('RecipeExpnd useEffect');
         const recipe = getRecipe(id);
-        console.log(recipe);
+        console.log('accepted recipe:', recipe);
         setRecipe(recipe);
-    }, [getRecipe,id]); 
+    }, [getRecipe, id]);
 
 
     return (

@@ -49,7 +49,12 @@ function App() {
   }, []);
 
   const changeHandler = (e) => {
-    const str = e.target.value.trim();
+    console.log('changeHandler fire');
+    console.log(document.location.pathname);
+    if (document.location.pathname === '/') {
+      console.log('FIRE');
+
+      const str = e.target.value.trim();
     if (str === '' || str === ' ' || str === null) {
       setRecipeString(null)
       setRecipes(data);
@@ -62,17 +67,19 @@ function App() {
       prevState = data.filter(
         recipe => recipe.title.toLowerCase().includes(str)
       );
-
+      console.log('filtered recipes:', prevState);
       // console.log(prevState,prevState.length);
       // return [...prevState];
       if (prevState.length === 0) {
-        console.log(data);
+        // console.log(data);
         return [];
       }
       else {
         return [...prevState];
       }
     });
+    }
+    
   }
 
   useEffect(() => {
@@ -81,10 +88,9 @@ function App() {
   }, [fetchRecipes]);
 
   const getRecipe = (id) => {
-    console.log(id);
+    console.log('getRecipe fire, id:', id);
     if (recipes) {
       const [recipe] = recipes.filter(recipe => recipe.id === id);
-      console.log(recipes);
       return recipe;
     }
   }
