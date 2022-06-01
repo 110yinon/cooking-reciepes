@@ -9,25 +9,45 @@ import RecipeExpnd from './components/RecipeExpnd';
 import ReCPList from './components/ReCPList';
 
 function App() {
-  const [url] = useState('http://localhost:3000/recipes');
   // const { data, isPending, error } = useFetch(url);
   const [recipes, setRecipes] = useState([]);
   const [recipeString, setRecipeString] = useState(null);
   const [data, setData] = useState([]);
+  const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState(null);
 
   console.log('--------------------------');
   // console.log(data, isPending, error);
   console.log('recipes:', recipes);
   console.log('**************************');
 
-  const test = () => console.log('kuni');
+
   const fetchRecipes = useCallback(async () => {
     console.log('fetchRecipes fire');
-    const res = await fetch('http://localhost:3000/recipes');
-    const recipes = await res.json();
-    // console.log(recipes);
-    setRecipes(recipes);
-    setData(recipes);
+    const controller = new AbortController()
+    setIsPending(true)
+
+    try {
+      const res = await fetch('http://localhost:3000/recipes', { signal: controller.signal })
+      if (!res.ok) {
+        throw new Error(res.statusText)
+      }
+      const data = await res.json()
+      setIsPending(false)
+      setRecipes(data);
+      setData(data);
+      setError(null)
+    } catch (err) {
+      if (err.name === "AbortError") {
+        console.log("the fetch was aborted")
+      } else {
+        setIsPending(false)
+        setError('Could not fetch the data')
+      }
+    }
+    return () => {
+      controller.abort()
+    }
   }, []);
 
   const changeHandler = (e) => {
@@ -78,7 +98,15 @@ function App() {
         <Bar changeHandler={changeHandler} />
         <Switch>
           <Route exact path="/">
-            <ReCPList test={test} fetchRecipes={fetchRecipes} recipes={recipes} />
+            {/* {error && <div>{error}</div>}
+            {isPending && <div>Loading recipes...</div>}
+            <div className='recipes-list '>
+              {recipeString && <h1 className='recipe-string'>Recipes including "{recipeString}"</h1>}
+              {recipes && recipes.map(recipe => <Recipe recipe={recipe} key={recipe.id} />)}
+            </div> */}
+            {error && <div>{error}</div>}
+            {isPending && <div>Loading recipes...</div>}
+            <ReCPList fetchRecipes={fetchRecipes} recipes={recipes} recipeString={recipeString} />
           </Route>
           <Route path="/recipes/:id">
             <RecipeExpnd getRecipe={getRecipe} />
