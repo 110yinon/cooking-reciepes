@@ -2,9 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import Bar from './components/Bar';
-import Recipe from './components/Recipe';
 import Create from './components/Create';
-import { useFetch } from './hooks/useFetch';
 import RecipeExpnd from './components/RecipeExpnd';
 import ReCPList from './components/ReCPList';
 
@@ -16,10 +14,10 @@ function App() {
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
 
-  console.log('--------------------------');
-  // console.log(data, isPending, error);
+  console.log('------------App component--------------');
+  console.log(data, isPending, error);
   console.log('recipes:', recipes);
-  console.log('**************************');
+  console.log('***************************************');
 
 
   const fetchRecipes = useCallback(async () => {
@@ -80,7 +78,7 @@ function App() {
   useEffect(() => {
     console.log('App useEffect');
     fetchRecipes();
-  }, []);
+  }, [fetchRecipes]);
 
   const getRecipe = (id) => {
     console.log(id);
@@ -104,9 +102,20 @@ function App() {
               {recipeString && <h1 className='recipe-string'>Recipes including "{recipeString}"</h1>}
               {recipes && recipes.map(recipe => <Recipe recipe={recipe} key={recipe.id} />)}
             </div> */}
-            {error && <div>{error}</div>}
-            {isPending && <div>Loading recipes...</div>}
-            <ReCPList fetchRecipes={fetchRecipes} recipes={recipes} recipeString={recipeString} />
+            {/* {error && <div>{error}</div>} */}
+            {
+              // isPending ?
+              //   <div>Loading recipes...</div> :
+              //   <ReCPList fetchRecipes={fetchRecipes} recipes={recipes} recipeString={recipeString} isPending={isPending} />
+            }
+            {/* {isPending && <div>Loading recipes...</div>} */}
+            <ReCPList
+              fetchRecipes={fetchRecipes}
+              recipes={recipes}
+              recipeString={recipeString}
+              isPending={isPending}
+              error={error}
+            />
           </Route>
           <Route path="/recipes/:id">
             <RecipeExpnd getRecipe={getRecipe} />

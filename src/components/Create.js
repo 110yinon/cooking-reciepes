@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useFetch } from '../hooks/useFetch';
 import './create.css'
 
 export default function Create() {
@@ -8,18 +7,18 @@ export default function Create() {
     const [ingred, setIngred] = useState('');
     const history = useHistory();
 
-    const recipe = {
-        "id": "17",
-        "title": "Veggie Pizza",
-        "ingredients": [
-            "1 Base",
-            "Tomata pasata",
-            "1 Green pepper",
-            "100g Mushrooms"
-        ],
-        "method": "1. Pre-heat the oven to 200C/3C/gas 5. Add the pasata, green pepper and mushrooms to the base. Place the lid on the oven and cook for 30 minutes. 5. Serve with a slaw of your choice",
-        "cookingTime": "35 minutes"
-    };
+    // const recipe = {
+    //     "id": "17",
+    //     "title": "Veggie Pizza",
+    //     "ingredients": [
+    //         "1 Base",
+    //         "Tomata pasata",
+    //         "1 Green pepper",
+    //         "100g Mushrooms"
+    //     ],
+    //     "method": "1. Pre-heat the oven to 200C/3C/gas 5. Add the pasata, green pepper and mushrooms to the base. Place the lid on the oven and cook for 30 minutes. 5. Serve with a slaw of your choice",
+    //     "cookingTime": "35 minutes"
+    // };
 
     const addRecipe = async (recipe) => {
         const res = await fetch('http://localhost:3000/recipes',

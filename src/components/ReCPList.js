@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Recipe from "./Recipe";
 
-export default function ReCPList({ fetchRecipes, recipes,recipeString }) {
+export default function ReCPList({ fetchRecipes, recipes, recipeString, isPending, error }) {
     // const [recipes, setRecipes] = useState([]);
     console.log('ReCPList component');
 
@@ -12,8 +12,16 @@ export default function ReCPList({ fetchRecipes, recipes,recipeString }) {
 
     return (
         <div className='recipes-list '>
-            {recipeString && <h1 className='recipe-string'>Recipes including "{recipeString}"</h1>}
-            {recipes && recipes.map(recipe => <Recipe recipe={recipe} key={recipe.id} />)}
+            {
+                error ? <div>{error}</div> :
+                    isPending ?
+                        <div>Loading recipes...</div> :
+                        <>
+                            {recipeString && <h1 className='recipe-string'>Recipes including "{recipeString}"</h1>}
+                            {recipes && recipes.map(recipe => <Recipe recipe={recipe} key={recipe.id} />)}
+                        </>
+            }
+
         </div>
     );
 }
