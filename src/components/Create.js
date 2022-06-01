@@ -49,7 +49,7 @@ export default function Create() {
         e.preventDefault();
         if (ingredients.length) {
             const recipe = {
-                "id": Math.round(Math.random() * 10000),
+                "id": `${Math.round(Math.random() * 10000)}`,
                 "title": e.target.title.value,
                 "ingredients": [...ingredients],
                 "method": e.target.method.value,

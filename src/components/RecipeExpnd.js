@@ -7,7 +7,7 @@ import { useState } from 'react';
 export default function RecipeExpnd({ getRecipe }) {
     const { id } = useParams();
     const [recipe, setRecipe] = useState(null);
-    console.log('rcp component');
+    console.log('*** RecipeExpnd component ***');
 
     useEffect(() => {
         console.log('handler ');

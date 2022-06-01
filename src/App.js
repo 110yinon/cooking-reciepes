@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import Bar from './components/Bar';
@@ -20,8 +20,16 @@ function App() {
   console.log('recipes:', recipes);
   console.log('**************************');
 
+  const test = () => console.log('kuni');
+  const fetchRecipes = useCallback(async () => {
+    console.log('fetchRecipes fire');
+    const res = await fetch('http://localhost:3000/recipes');
+    const recipes = await res.json();
+    // console.log(recipes);
+    setRecipes(recipes);
+    setData(recipes);
+  }, []);
 
-  
   const changeHandler = (e) => {
     const str = e.target.value.trim();
     if (str === '' || str === ' ' || str === null) {
@@ -32,7 +40,7 @@ function App() {
     // const kuni = recipes.filter(recipe => recipe.title.toLowerCase().includes(e.target.value.trim()));
     setRecipeString(str);
     setRecipes(prevState => {
-      console.log(data.filter(recipe => recipe.title.toLowerCase().includes(str)));
+      // console.log(data.filter(recipe => recipe.title.toLowerCase().includes(str)));
       prevState = data.filter(
         recipe => recipe.title.toLowerCase().includes(str)
       );
@@ -49,28 +57,28 @@ function App() {
     });
   }
 
-  // useEffect(() => {
-  //   console.log('setRecipes fire');
-  //   setRecipes(data)
-  // }, [data]);
+  useEffect(() => {
+    console.log('App useEffect');
+    fetchRecipes();
+  }, []);
 
   const getRecipe = (id) => {
-    // console.log(id);
+    console.log(id);
     if (recipes) {
       const [recipe] = recipes.filter(recipe => recipe.id === id);
-      // console.log(sara);
+      console.log(recipes);
       return recipe;
     }
   }
 
-  
+
   return (
     <div className="App">
       <BrowserRouter>
         <Bar changeHandler={changeHandler} />
         <Switch>
           <Route exact path="/">
-            <ReCPList />
+            <ReCPList test={test} fetchRecipes={fetchRecipes} recipes={recipes} />
           </Route>
           <Route path="/recipes/:id">
             <RecipeExpnd getRecipe={getRecipe} />
