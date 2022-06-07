@@ -1,22 +1,33 @@
-.bar{
+.bar {
     height: 80px;
     background-color: rgb(88, 36, 150);
     color: whitesmoke;
+    max-width: 1200px;
+    margin: 0px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
 }
-.bar label input{
+.bar .ctrl-bar{
+    justify-self: end;
+}
+.bar label input {
     font-size: 1.1rem;
     padding: 5px;
     border-radius: 4px;
     border: 0px;
 }
-.bar label input:focus{
+
+.bar label input:focus {
     outline: none;
 }
-.bar label span{    
+
+.bar label span {
     font-size: 1.1rem;
     color: whitesmoke;
 }
-.bar button{
+
+.bar button {
     margin-left: 30px;
     font-size: 1.1rem;
     font-weight: 100;
@@ -27,19 +38,25 @@
     background-color: rgb(88, 36, 150);
     cursor: pointer;
 }
-.bar button:hover{
+
+.bar button:hover {
     color: black;
     background-color: whitesmoke;
 }
-.bar label,button,input{
+
+.bar label,
+button,
+input {
     height: 35px;
-    box-sizing: border-box;    
+    box-sizing: border-box;
 }
-.bar h1 a{
-    color:inherit;
+
+.bar h1 a {
+    color: inherit;
     text-decoration: none;
 }
-.bar button a{
-    color:inherit;
+
+.bar button a {
+    color: inherit;
     text-decoration: none;
 }
