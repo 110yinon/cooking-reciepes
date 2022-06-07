@@ -8,7 +8,6 @@ export default function RecipeExpnd({ getRecipe }) {
     const { id } = useParams();
     const [recipe, setRecipe] = useState(null);
     console.log('*** RecipeExpnd component ***');
-
     useEffect(() => {
         console.log('RecipeExpnd useEffect');
         const recipe = getRecipe(id);
@@ -23,8 +22,8 @@ export default function RecipeExpnd({ getRecipe }) {
                 <>
                     <h1>{recipe.title}</h1>
                     <p>{recipe.cookingTime}</p>
-                    <p>{recipe.ingredients}</p>
-                    <p>{recipe.method}</p>
+                    <p className='ingredients'>{recipe.ingredients.map(ing=>`${ing}, `)}</p>
+                    <p className='method'>{recipe.method}</p>
                 </> : <div>No recipe</div>}
         </div>
     );
