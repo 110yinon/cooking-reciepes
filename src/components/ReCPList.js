@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Recipe from "./Recipe";
+import './reCPList.css'
 
 export default function ReCPList({ fetchRecipes, recipes, recipeString, isPending, error }) {
     // const [recipes, setRecipes] = useState([]);
@@ -11,7 +12,7 @@ export default function ReCPList({ fetchRecipes, recipes, recipeString, isPendin
     }, [fetchRecipes]);
 
     return (
-        <div className='recipes-list '>
+        <div className='recipes-list'>
             {
                 error ? <div>{error}</div> :
                     isPending ?
