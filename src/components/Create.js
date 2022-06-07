@@ -71,13 +71,13 @@ export default function Create() {
                     <span>Recipe Title:</span>
                     <input type="text" id='title' autoComplete='off' required />
                 </label>
-                <label>
+                <label className='ingredients'>
                     <span>Recipe Ingredients:</span>
                     <input type="text" id='ingredients' autoComplete='off' value={ingred}
                         onChange={(e) => setIngred(e.target.value)}
                     />
-                    <span onClick={handleClick}>Add</span>
-                    <p>Current ingredients:{ingredients.map(ingrd => ` ${ingrd},`)}</p>
+                    <span className='add' onClick={handleClick}>Add</span>
+                    <span>Current ingredients:{ingredients.map(ingrd => ` ${ingrd},`)}</span>
                 </label>
                 <label>
                     <span>Recipe Method:</span>

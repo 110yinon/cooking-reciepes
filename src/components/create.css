@@ -1,0 +1,61 @@
+.create{
+    background-color: rgb(222, 222, 222);
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1200px;
+    margin: 0px auto;
+    justify-items: center;
+}
+.create form{
+    display: grid;
+    grid-template-columns: 380px;
+    justify-items: center;
+    gap: 20px;
+}
+.create label {
+    width: 100%;
+}
+.create form label input,textarea{
+    box-sizing: border-box;
+    width: 100%;
+}
+.create form label span{
+    display: block;
+    margin: 10px 0px;
+}
+.create form .ingredients{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 10px;
+    align-items: center;
+}
+.create .ingredients span{
+    grid-column: span 4;
+}
+.create .ingredients input{
+    grid-column: span 3;
+}
+.create .ingredients .add{
+    grid-column: span 1;
+    border-radius: 4px;
+    background-color: rgb(88, 36, 150);
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    height: 100%;
+    font-weight: 500;
+    cursor: pointer;
+}
+.create button{
+    border-radius: 4px;
+    background-color: rgb(88, 36, 150);
+    color: whitesmoke;
+    border: none;
+    font-size: 1.2em;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}

@@ -2,5 +2,6 @@
 
 body{
   font-family: Raleway, sans-serif;
-  /* max-width: 960px;   */
+  margin: 0px;
+  background-color: rgb(222, 222, 222);
 }
