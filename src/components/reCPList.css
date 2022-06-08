@@ -5,7 +5,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
-    padding-top: 30px;
+    padding-block: 30px;
 }
 .recipe-string{
     grid-column: span 3;
