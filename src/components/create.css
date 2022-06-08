@@ -59,3 +59,13 @@
     display: flex;
     align-items: center;
 }
+/* responsive */
+@media screen and (max-width: 450px) {
+    .create{
+        max-width: 350px;
+    }
+    .create form{
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+}

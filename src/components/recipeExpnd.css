@@ -17,3 +17,34 @@
     margin-top: 40px;
     line-height: 1.6;
 }
+/* responsive */
+@media screen and (max-width: 1210px){
+   .recipeExpnd{
+       max-width: 960px;
+   } 
+}
+@media screen and (max-width: 1000px){
+    .recipeExpnd{
+        max-width: 760px;
+    }   
+}
+@media screen and (max-width: 820px){
+    .recipeExpnd{
+        max-width: 640px;
+    }     
+}
+@media screen and (max-width: 700px){
+    .recipeExpnd{
+        max-width: 540px;
+    }     
+}
+@media screen and (max-width: 600px){
+    .recipeExpnd{
+        max-width: 420px;
+    }     
+}
+@media screen and (max-width: 490px){
+    .recipeExpnd{
+        margin-inline: 60px;
+    }     
+}

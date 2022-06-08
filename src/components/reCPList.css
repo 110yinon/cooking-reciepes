@@ -11,3 +11,30 @@
     grid-column: span 3;
     margin: 0px auto;
 }
+
+/* responsive */
+@media screen and (max-width: 1210px){
+    .recipes-list{
+        max-width: 960px;
+    }
+}
+@media screen and (max-width: 1000px){
+    .recipes-list{
+        max-width: 960px;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        padding-inline: 40px;
+    }
+}
+@media screen and (max-width: 760px){
+    .recipes-list{
+        max-width: 420px;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-inline: 30px;
+    }
+    .recipe-string{
+        grid-column: span 1;
+        font-size: 1.5em;
+    }
+}
