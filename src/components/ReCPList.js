@@ -8,6 +8,7 @@ export default function ReCPList({ fetchRecipes, recipes, recipeString, isPendin
 
 
     useEffect(() => {
+        console.log('ReCPList useEffect');
         fetchRecipes();
     }, [fetchRecipes]);
 
