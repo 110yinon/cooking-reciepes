@@ -1,5 +1,5 @@
 .bar {
-    background-color: rgb(88, 36, 150);
+    background-color: inherit;
     color: whitesmoke;
     max-width: 1200px;
     margin: 0px auto;
@@ -34,7 +34,7 @@
     border: 1px whitesmoke solid;
     border-radius: 4px;
     padding: 7px 7px;
-    background-color: rgb(88, 36, 150);
+    background-color: inherit;
     cursor: pointer;
 }
 

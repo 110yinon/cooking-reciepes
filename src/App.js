@@ -5,6 +5,7 @@ import Bar from './components/Bar';
 import Create from './components/Create';
 import RecipeExpnd from './components/RecipeExpnd';
 import ReCPList from './components/ReCPList';
+import ThemeSelectorBar from './components/ThemeSelectorBar';
 
 function App() {
   // const { data, isPending, error } = useFetch(url);
@@ -55,31 +56,31 @@ function App() {
       console.log('FIRE');
 
       const str = e.target.value.trim();
-    if (str === '' || str === ' ' || str === null) {
-      setRecipeString(null)
-      setRecipes(data);
-    }
-    // console.log(str);
-    // const kuni = recipes.filter(recipe => recipe.title.toLowerCase().includes(e.target.value.trim()));
-    setRecipeString(str);
-    setRecipes(prevState => {
-      // console.log(data.filter(recipe => recipe.title.toLowerCase().includes(str)));
-      prevState = data.filter(
-        recipe => recipe.title.toLowerCase().includes(str)
-      );
-      console.log('filtered recipes:', prevState);
-      // console.log(prevState,prevState.length);
-      // return [...prevState];
-      if (prevState.length === 0) {
-        // console.log(data);
-        return [];
+      if (str === '' || str === ' ' || str === null) {
+        setRecipeString(null)
+        setRecipes(data);
       }
-      else {
-        return [...prevState];
-      }
-    });
+      // console.log(str);
+      // const kuni = recipes.filter(recipe => recipe.title.toLowerCase().includes(e.target.value.trim()));
+      setRecipeString(str);
+      setRecipes(prevState => {
+        // console.log(data.filter(recipe => recipe.title.toLowerCase().includes(str)));
+        prevState = data.filter(
+          recipe => recipe.title.toLowerCase().includes(str)
+        );
+        console.log('filtered recipes:', prevState);
+        // console.log(prevState,prevState.length);
+        // return [...prevState];
+        if (prevState.length === 0) {
+          // console.log(data);
+          return [];
+        }
+        else {
+          return [...prevState];
+        }
+      });
     }
-    
+
   }
 
   useEffect(() => {
@@ -100,6 +101,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Bar changeHandler={changeHandler} />
+        <ThemeSelectorBar />
         <Switch>
           <Route exact path="/">
             {/* {error && <div>{error}</div>}

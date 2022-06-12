@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
+import { useTheme } from '../hooks/useTheme';
 import './bar.css';
 
 function Bar({ changeHandler }) {
 
+    const { color } = useTheme();
+
     return (
-        <header>
+        <header style={{ backgroundColor: color }}>
             <div className="bar">
                 <h1><Link to="/">Cooking Ninja</Link></h1>
                 <div className='ctrl-bar'>
