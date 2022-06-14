@@ -22,3 +22,6 @@
     height: 20px;
     cursor: pointer;
 }
+.theme-selector.dark{
+    background-color: #515151;
+}

@@ -47,3 +47,7 @@
     color: inherit;
     text-decoration-line: none;
 }
+.recipe.dark{
+    color: #e3e3e3;
+    box-shadow: none;
+}

@@ -13,3 +13,7 @@
   margin: 10px 10px;
   box-sizing: border-box;
 }
+.App.dark{
+  height: 100vh;
+  background-color: #515151;
+}

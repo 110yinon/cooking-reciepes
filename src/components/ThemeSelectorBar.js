@@ -6,12 +6,20 @@ const themeColors = ['#58249c', '#249c6b', '#b70233'];
 
 export default function ThemeSelectorBar() {
 
-    const { changeColor } = useTheme();
+    const { changeColor, mode, toggleMode } = useTheme();
 
+    const handleClick = () => {
+        toggleMode(mode === 'dark' ? 'light' : 'dark');
+    }
     return (
-        <div className="theme-selector">
+        <div className={`theme-selector ${mode}`}>
             <div className='mode-selector'>
-                <img src={modeIcon} alt="mode icon toggle" />
+                <img
+                    style={{ filter: mode === 'dark' ? 'invert(100%)' : '' }}
+                    src={modeIcon}
+                    alt="mode icon toggle"
+                    onClick={handleClick}
+                />
             </div>
             <div className="theme-buttons">
                 {

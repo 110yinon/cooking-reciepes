@@ -6,6 +6,7 @@ import Create from './components/Create';
 import RecipeExpnd from './components/RecipeExpnd';
 import ReCPList from './components/ReCPList';
 import ThemeSelectorBar from './components/ThemeSelectorBar';
+import { useTheme } from './hooks/useTheme';
 
 function App() {
   // const { data, isPending, error } = useFetch(url);
@@ -14,6 +15,7 @@ function App() {
   const [data, setData] = useState([]);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
+  const { mode } = useTheme();
 
   console.log('------------App component--------------');
   console.log(data, isPending, error);
@@ -98,7 +100,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className={`App ${mode}`}>
       <BrowserRouter>
         <Bar changeHandler={changeHandler} />
         <ThemeSelectorBar />

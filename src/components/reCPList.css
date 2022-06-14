@@ -11,7 +11,9 @@
     grid-column: span 3;
     margin: 0px auto;
 }
-
+.recipes-list.dark{
+    background-color: #515151;    
+}
 /* responsive */
 @media screen and (max-width: 1210px){
     .recipes-list{

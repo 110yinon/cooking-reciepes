@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTheme } from "../hooks/useTheme";
 import Recipe from "./Recipe";
 import './reCPList.css'
 
@@ -6,6 +7,7 @@ export default function ReCPList({ fetchRecipes, recipes, recipeString, isPendin
     // const [recipes, setRecipes] = useState([]);
     console.log('ReCPList component');
 
+    const { mode } = useTheme();
 
     useEffect(() => {
         console.log('ReCPList useEffect');
@@ -13,7 +15,7 @@ export default function ReCPList({ fetchRecipes, recipes, recipeString, isPendin
     }, [fetchRecipes]);
 
     return (
-        <div className='recipes-list'>
+        <div className={`recipes-list ${mode}`}>
             {
                 error ? <div>{error}</div> :
                     isPending ?
