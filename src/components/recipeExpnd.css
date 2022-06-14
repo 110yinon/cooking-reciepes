@@ -11,11 +11,16 @@
     margin: 0px auto;
 }
 .recipeExpnd .ingredients{
-    color: #777578;
+    color: inherit;
+    opacity: 0.7;
 }
 .recipeExpnd .method{
     margin-top: 40px;
     line-height: 1.6;
+}
+.recipeExpnd.dark{
+    color: #e3e3e3;
+    background-color: #555555;
 }
 /* responsive */
 @media screen and (max-width: 1210px){

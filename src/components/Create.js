@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useTheme } from '../hooks/useTheme';
 import './create.css'
 
 export default function Create() {
     const [ingredients, setIngredients] = useState([]);
     const [ingred, setIngred] = useState('');
     const history = useHistory();
+    const { mode } = useTheme();
 
     // const recipe = {
     //     "id": "17",
@@ -64,30 +66,30 @@ export default function Create() {
 
 
     return (
-        <div className='create'>
+        <div className={`create ${mode}`}>
             <h1>Add a New Recipe</h1>
             <form onSubmit={handleSubmit}>
                 <label>
                     <span>Recipe Title:</span>
-                    <input type="text" id='title' autoComplete='off' required />
+                    <input className={`${mode}`} type="text" id='title' autoComplete='off' required/>
                 </label>
                 <label className='ingredients'>
                     <span>Recipe Ingredients:</span>
-                    <input type="text" id='ingredients' autoComplete='off' value={ingred}
+                    <input className={`${mode}`} type="text" id='ingredients' autoComplete='off' value={ingred}
                         onChange={(e) => setIngred(e.target.value)}
                     />
-                    <span className='add' onClick={handleClick}>Add</span>
+                    <span className={`add ${mode}`} onClick={handleClick}>Add</span>
                     <span>Current ingredients:{ingredients.map(ingrd => ` ${ingrd},`)}</span>
                 </label>
                 <label>
                     <span>Recipe Method:</span>
-                    <textarea type="text" id='method' autoComplete='off' required />
+                    <textarea className={`${mode}`} type="text" id='method' autoComplete='off' required />
                 </label>
                 <label>
                     <span>Cooking Time (minutes)</span>
-                    <input type="text" id='time' autoComplete='off' required />
+                    <input className={`${mode}`} type="text" id='time' autoComplete='off' required />
                 </label>
-                <button>Submit</button>
+                <button className={`${mode}`}>Submit</button>
             </form>
         </div>
     );

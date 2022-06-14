@@ -21,7 +21,7 @@ export default function ReCPList({ fetchRecipes, recipes, recipeString, isPendin
                     isPending ?
                         <div>Loading recipes...</div> :
                         <>
-                            {recipeString && <h1 className='recipe-string'>Recipes including "{recipeString}"</h1>}
+                            {recipeString && <h1 className={`recipe-string ${mode}`}>Recipes including "{recipeString}"</h1>}
                             {recipes && recipes.map(recipe => <Recipe recipe={recipe} key={recipe.id} />)}
                         </>
             }

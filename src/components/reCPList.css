@@ -12,7 +12,10 @@
     margin: 0px auto;
 }
 .recipes-list.dark{
-    background-color: #515151;    
+    background-color: #333333;    
+}
+.recipe-string.dark{
+    color:#e3e3e3;
 }
 /* responsive */
 @media screen and (max-width: 1210px){

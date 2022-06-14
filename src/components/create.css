@@ -18,6 +18,13 @@
 .create form label input,textarea{
     box-sizing: border-box;
     width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+    border: 0px solid black;    
+}
+.create form label input:focus, textarea:focus{
+    outline: 3px solid #89bfeb;
+    border: 0px;
 }
 .create form label span{
     display: block;
@@ -58,6 +65,21 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+}
+.create.dark{    
+    color: #e3e3e3;
+    background-color: #333333;
+}
+.create button.dark,
+.create .ingredients .add.dark{
+    background-color: #515151;
+    color: #e3e3e3;
+}
+.create form label input.dark,textarea.dark{
+    background-color: #858585;
+}
+.create form label input.dark:hover,textarea.dark:hover{    
+    cursor: default;
 }
 /* responsive */
 @media screen and (max-width: 450px) {
