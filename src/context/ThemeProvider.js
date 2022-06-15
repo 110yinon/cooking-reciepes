@@ -15,18 +15,28 @@ const themeReducer = (state, action) => {
 }
 
 export default function ThemeProvider({ children }) {
-
-    const [state, dispatch] = useReducer(themeReducer, {
+    const theme = localStorage.getItem('recipe_ninja_theme');
+    // console.log(theme);
+    // if (theme) {
+    //     theme = JSON.parse(theme)
+    //     console.log(theme);
+    // }
+    // else {
+    //     const init = { color: '#58249c', mode: 'light' }
+    // }
+    const [state, dispatch] = useReducer(themeReducer, theme ? JSON.parse(theme) : {
         color: '#58249c',
         mode: 'light'
     });
 
     const changeColor = (color) => {
         dispatch({ type: 'CHANGE_COLOR', payload: color });
+        localStorage.setItem('recipe_ninja_theme', JSON.stringify({ ...state, color }));
     }
 
     const toggleMode = (mode) => {
         dispatch({ type: 'CHANGE_MODE', payload: mode });
+        localStorage.setItem('recipe_ninja_theme', JSON.stringify({ ...state, mode }));
     }
 
     return (
