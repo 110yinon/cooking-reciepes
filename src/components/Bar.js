@@ -9,7 +9,7 @@ function Bar({ changeHandler }) {
     return (
         <header style={{ backgroundColor: color }}>
             <div className="bar">
-                <h1><Link to="/">Cooking Ninja</Link></h1>
+                <h1><Link to="/">Cooking Recipes</Link></h1>
                 <div className='ctrl-bar'>
                     <label>
                         <span>Search: </span>
