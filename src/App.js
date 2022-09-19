@@ -29,7 +29,7 @@ function App() {
     setIsPending(true)
 
     try {
-      const res = await fetch('http://localhost:3000/recipes', { signal: controller.signal })
+      const res = await fetch('https://json-server-recipes.onrender.com/recipes', { signal: controller.signal })
       if (!res.ok) {
         throw new Error(res.statusText)
       }

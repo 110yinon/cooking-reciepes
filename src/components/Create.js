@@ -23,7 +23,7 @@ export default function Create() {
     // };
 
     const addRecipe = async (recipe) => {
-        const res = await fetch('http://localhost:3000/recipes',
+        const res = await fetch('https://json-server-recipes.onrender.com/recipes',
             {
                 method: 'POST',
                 body: JSON.stringify(recipe),
